@@ -1,0 +1,3 @@
+application\configuration\MovieWebApplicationConfiguration.class
+application\configuration\MovieWebApplicationInitializer.class
+application\controllers\MovieCrawlerController.class
