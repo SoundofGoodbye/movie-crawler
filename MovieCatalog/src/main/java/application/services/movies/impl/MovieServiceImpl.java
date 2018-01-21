@@ -3,11 +3,15 @@ package application.services.movies.impl;
 import application.models.movies.Movie;
 import application.services.movies.MovieService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service("movieService")
 public class MovieServiceImpl implements MovieService {
@@ -18,18 +22,12 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> getAllMoviesFrom(String sourceId) {
         RestTemplate restTemplate = new RestTemplate();
-      /*  CardDetailsResponse cardDetails = restTemplate.getForObject(
-                "localhost:9001",
-                CardDetailsResponse.class);*/
+        String url = webcrawlerUrl + "/movies";
 
-
-
-        List<Movie> movies = new ArrayList<>();
-        List<String> actorNames = new ArrayList<>();
-        actorNames.add(webcrawlerUrl);
-        Movie movie = new Movie("Pirates of the Caribean", "2010", actorNames);
-        movies.add(movie);
-
-        return movies;
+        ResponseEntity<List<Movie>> rateResponse =
+                restTemplate.exchange(url,
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Movie>>() {
+                        });
+        return rateResponse.getBody();
     }
 }

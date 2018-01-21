@@ -1,19 +1,25 @@
 package application.models.movies;
 
 import application.models.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Arrays;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Movie {
     private String title;
-    private String year;
-    private List<String> actorNames;
+    private String releaseDate;
+    private List<String> actors;
 
-    public Movie(String title, String year, List<String> actorNames) {
+    public Movie() {
+
+    }
+
+    public Movie(String title, String releaseDate, List<String> actors) {
         this.title = title;
-        this.year = year;
-        this.actorNames = actorNames;
+        this.releaseDate = releaseDate;
+        this.actors = actors;
     }
 
     public String getTitle() {
@@ -24,20 +30,20 @@ public class Movie {
         this.title = title;
     }
 
-    public String getYear() {
-        return year;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public List<String> getActorNames() {
-        return actorNames;
+    public List<String> getActors() {
+        return actors;
     }
 
-    public void setActorNames(List<String> actorNames) {
-        this.actorNames = actorNames;
+    public void setActors(List<String> actors) {
+        this.actors = actors;
     }
 
     @Override
@@ -56,7 +62,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie [title=" + getTitle() + ", year=" + getYear() + ", actors[=" + Arrays.asList(actorNames)
-                + "]" +"]";
+        return "Movie [title=" + getTitle() + ", releaseDate=" + getReleaseDate() + ", actors[=" + Arrays.asList(actors)
+                + "]" + "]";
     }
 }
