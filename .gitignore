@@ -35,7 +35,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+target/
+.idea/
 
 # IntelliJ Idea Generated Files
 *.iml
-*.idea
