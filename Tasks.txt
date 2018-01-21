@@ -1,0 +1,21 @@
+
+update Movie model()
+Implement imdb API
+Implement filtring (come up with categories)
+Implement search functionality 
+Front end (navigation)
+Implement another crawler (getting releated news to the movie)
+Research elasticsearch
+Implement log in , security , account features
+Movie ratings,comments
+
+Implement new models:
+Movie(Title,Actors(id),Release date,Genre,Duration,TV show(y/n))
+Genre -> action, comedy etc.
+Actor model -> Movies(id),Age, Bio
+
+Account -> user,pass,email, details, favorites
+
+Search -> direct, category, rating search, actor search, complex search - based on data
+
+People Features -> search ppl
