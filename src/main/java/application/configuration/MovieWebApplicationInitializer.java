@@ -2,6 +2,8 @@ package application.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Filter;
+
 public class MovieWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
@@ -17,6 +19,12 @@ public class MovieWebApplicationInitializer extends AbstractAnnotationConfigDisp
     @Override
     protected String[] getServletMappings() {
         return new String[] { "/" };
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        Filter [] singleton = { new CORSFilter() };
+        return singleton;
     }
 
 }

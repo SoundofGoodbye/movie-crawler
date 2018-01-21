@@ -1,3 +1,12 @@
-C:\Users\Martin\IdeaProjects\application\src\main\java\application\controllers\MovieCrawlerController.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\controllers\HelloWorldRestController.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\models\movies\Movie.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\models\User.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\services\movies\MovieServiceImpl.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\services\impl\UserServiceImpl.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\services\UserService.java
 C:\Users\Martin\IdeaProjects\application\src\main\java\application\configuration\MovieWebApplicationInitializer.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\services\movies\MovieService.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\controllers\IndexController.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\controllers\MoviesRestController.java
+C:\Users\Martin\IdeaProjects\application\src\main\java\application\configuration\CORSFilter.java
 C:\Users\Martin\IdeaProjects\application\src\main\java\application\configuration\MovieWebApplicationConfiguration.java

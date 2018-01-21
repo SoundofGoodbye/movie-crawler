@@ -1,3 +1,12 @@
+application\controllers\IndexController.class
 application\configuration\MovieWebApplicationConfiguration.class
+application\controllers\MoviesRestController.class
+application\models\movies\Movie.class
+application\services\movies\MovieServiceImpl.class
+application\services\UserService.class
+application\services\movies\MovieService.class
+application\models\User.class
+application\services\impl\UserServiceImpl.class
 application\configuration\MovieWebApplicationInitializer.class
-application\controllers\MovieCrawlerController.class
+application\controllers\HelloWorldRestController.class
+application\configuration\CORSFilter.class
