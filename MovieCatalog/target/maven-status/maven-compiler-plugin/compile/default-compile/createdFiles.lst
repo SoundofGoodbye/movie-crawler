@@ -1,4 +1,5 @@
 application\configuration\MovieWebApplicationConfiguration.class
+application\services\movies\impl\MovieServiceImpl$1.class
 application\services\movies\impl\MovieServiceImpl.class
 application\services\UserService.class
 application\services\movies\MovieService.class
