@@ -37,5 +37,5 @@ ehthumbs.db
 Thumbs.db
 
 # IntelliJ Idea Generated Files
-.iml
-.idea
+*.iml
+*.idea
