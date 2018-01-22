@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
-//@Table(name = "movie")
 public class Movie {
 
     @Id
