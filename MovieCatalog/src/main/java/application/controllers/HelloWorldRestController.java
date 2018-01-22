@@ -2,7 +2,7 @@ package application.controllers;
   
 import java.util.List;
 
-import application.models.User;
+import application.models.users.User;
 import application.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

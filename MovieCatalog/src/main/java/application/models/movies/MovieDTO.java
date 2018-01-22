@@ -1,24 +1,32 @@
 package application.models.movies;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import application.enums.Genre;
+import application.models.actors.ActorDTO;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class MovieDTO {
     private String title;
+    //TODO use actual date instead of string
     private String releaseDate;
-    private List<String> actors;
+    private List<ActorDTO> actors;
+    private Genre genre;
+    private Integer durationInMin;
+    private Boolean isMovie;
 
     public MovieDTO() {
-
+        this.actors = new ArrayList<>();
     }
 
-    public MovieDTO(String title, String releaseDate, List<String> actors) {
+    public MovieDTO(String title, String releaseDate, List<ActorDTO> actors, Genre genre, Integer durationInMin, Boolean isMovie) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.actors = actors;
+        this.genre = genre;
+        this.durationInMin = durationInMin;
+        this.isMovie = isMovie;
     }
 
     public String getTitle() {
@@ -37,12 +45,36 @@ public class MovieDTO {
         this.releaseDate = releaseDate;
     }
 
-    public List<String> getActors() {
+    public List<ActorDTO> getActors() {
         return actors;
     }
 
-    public void setActors(List<String> actors) {
+    public void setActors(List<ActorDTO> actors) {
         this.actors = actors;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public Integer getDurationInMin() {
+        return durationInMin;
+    }
+
+    public void setDurationInMin(Integer durationInMin) {
+        this.durationInMin = durationInMin;
+    }
+
+    public Boolean getIsMovie() {
+        return isMovie;
+    }
+
+    public void setIsMovie(Boolean movie) {
+        isMovie = movie;
     }
 
     @Override
@@ -61,7 +93,7 @@ public class MovieDTO {
 
     @Override
     public String toString() {
-        return "MovieDTO [title=" + getTitle() + ", releaseDate=" + getReleaseDate() + ", actors[=" + Arrays.asList(actors)
+        return "MovieDTO [title=" + getTitle() + ", genre= " + getGenre() + ", releaseDate=" + getReleaseDate() + ", actors[=" + Arrays.asList(actors) + ", duration=" + ("" + getDurationInMin() / 60 + "hr " + getDurationInMin() % 60 + "min")
                 + "]" + "]";
     }
 }

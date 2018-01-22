@@ -1,8 +1,6 @@
 package application.entities;
 
-import application.models.User;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

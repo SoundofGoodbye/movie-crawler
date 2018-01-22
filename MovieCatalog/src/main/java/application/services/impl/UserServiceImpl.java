@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-import application.models.User;
+import application.models.users.User;
 import application.services.UserService;
 import org.springframework.stereotype.Service;
 
