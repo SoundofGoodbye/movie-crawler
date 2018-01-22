@@ -1,25 +1,49 @@
-package application.models.movies;
+package application.entities;
 
 import application.models.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+//@Table(name = "movie")
 public class Movie {
+
+    @Id
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String releaseDate;
-    private List<String> actors;
+
+    //TODO: Refactor to use Actor model
+   // @OneToOne
+    //@JoinColumn(name = "uniqueId")
+  /*  @Ignore
+    private List<String> actors;*/
 
     public Movie() {
 
     }
 
+    //TODO: Remove after creating actors model
+    public Movie(String title, String releaseDate) {
+        this.title = title;
+        this.releaseDate = releaseDate;
+    }
+
     public Movie(String title, String releaseDate, List<String> actors) {
         this.title = title;
         this.releaseDate = releaseDate;
-        this.actors = actors;
+        //this.actors = actors;
     }
 
     public String getTitle() {
@@ -38,14 +62,6 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
-    public List<String> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<String> actors) {
-        this.actors = actors;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -62,7 +78,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie [title=" + getTitle() + ", releaseDate=" + getReleaseDate() + ", actors[=" + Arrays.asList(actors)
+        return "MovieDTO [title=" + getTitle() + ", releaseDate=" + getReleaseDate() + ", actors[="
                 + "]" + "]";
     }
 }

@@ -1,6 +1,6 @@
 package application.services.movies.impl;
 
-import application.models.movies.Movie;
+import application.models.movies.MovieDTO;
 import application.services.movies.MovieService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -9,9 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service("movieService")
 public class MovieServiceImpl implements MovieService {
@@ -20,13 +18,13 @@ public class MovieServiceImpl implements MovieService {
     private String webcrawlerUrl;
 
     @Override
-    public List<Movie> getAllMoviesFrom(String sourceId) {
+    public List<MovieDTO> getAllMoviesFrom(String sourceId) {
         RestTemplate restTemplate = new RestTemplate();
         String url = webcrawlerUrl + "/movies";
 
-        ResponseEntity<List<Movie>> rateResponse =
+        ResponseEntity<List<MovieDTO>> rateResponse =
                 restTemplate.exchange(url,
-                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Movie>>() {
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieDTO>>() {
                         });
         return rateResponse.getBody();
     }

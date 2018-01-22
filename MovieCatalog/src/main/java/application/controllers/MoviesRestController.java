@@ -1,7 +1,6 @@
 package application.controllers;
 
-import application.models.User;
-import application.models.movies.Movie;
+import application.models.movies.MovieDTO;
 import application.services.movies.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +20,8 @@ public class MoviesRestController {
     private MovieService moviesService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Movie>> listMovies(@RequestParam("sourceId") String sourceId) {
-        List<Movie> movies = moviesService.getAllMoviesFrom(sourceId);
-        return new ResponseEntity<List<Movie>>(movies, HttpStatus.OK);
+    public ResponseEntity<List<MovieDTO>> listMovies(@RequestParam("sourceId") String sourceId) {
+        List<MovieDTO> movies = moviesService.getAllMoviesFrom(sourceId);
+        return new ResponseEntity<List<MovieDTO>>(movies, HttpStatus.OK);
     }
 }

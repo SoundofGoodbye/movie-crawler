@@ -8,12 +8,12 @@ public class MovieWebApplicationInitializer extends AbstractAnnotationConfigDisp
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { MovieWebApplicationConfiguration.class };
+        return new Class[] { AppConfig.class };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class[] {MovieWebApplicationConfiguration.class};
     }
 
     @Override
