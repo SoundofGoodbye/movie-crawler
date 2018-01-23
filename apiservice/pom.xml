@@ -6,12 +6,28 @@
 
     <groupId>com.moviecatalog</groupId>
     <artifactId>apiservice</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>${application.name}</name>
     <properties>
         <application.name>APIService</application.name>
+        <project.version>1.0.0</project.version>
     </properties>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.9.RELEASE</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+
+    <!--<parent>
+        <groupId>com.moviecatalog</groupId>
+        <artifactId>moviecatalog</artifactId>
+        <version>1.0.0</version>
+        <relativePath /> &lt;!&ndash; lookup parent from repository &ndash;&gt;
+    </parent>-->
 
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
     <dependencies>

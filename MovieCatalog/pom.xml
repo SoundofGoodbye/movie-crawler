@@ -3,20 +3,47 @@
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.moviecrawler</groupId>
+    <groupId>com.moviecatalog</groupId>
     <artifactId>application</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>MovieWebApplication</name>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.9.RELEASE</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+
+  <!--  <parent>
+        <groupId>com.moviecatalog</groupId>
+        <artifactId>moviecatalog</artifactId>
+        <version>1.0.0</version>
+        <relativePath /> &lt;!&ndash; lookup parent from repository &ndash;&gt;
+    </parent>-->
+
+    <!--<modules>
+        <module>../apiservice</module>
+    </modules>-->
 
     <properties>
         <springframework.version>5.0.2.RELEASE</springframework.version>
         <jackson.version>2.9.3</jackson.version>
         <hibernate.version>5.2.12.Final</hibernate.version>
         <mysql-connector-version>6.0.6</mysql-connector-version>
+        <project.version>1.0.0</project.version>
     </properties>
 
     <dependencies>
+        <!-- Movie Catalog dependencies-->
+        <dependency>
+            <groupId>com.moviecatalog</groupId>
+            <artifactId>apiservice</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
