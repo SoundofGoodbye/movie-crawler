@@ -26,6 +26,7 @@ public class Movie {
   /*  @Ignore
     private List<String> actors;*/
 
+  
     public Movie() {
 
     }
