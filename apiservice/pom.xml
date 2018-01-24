@@ -4,33 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.moviecatalog</groupId>
-    <artifactId>apiservice</artifactId>
+    <parent>
+        <groupId>com.moviecatalog</groupId>
+        <artifactId>moviecatalog</artifactId>
+        <version>1.0.0</version>
+    </parent>
 
+    <artifactId>APIService</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>${application.name}</name>
+
     <properties>
         <application.name>APIService</application.name>
         <spring-boot-version>1.5.9.RELEASE</spring-boot-version>
     </properties>
 
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.9.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
-    </parent>
-
-    <!--<parent>
-        <groupId>com.moviecatalog</groupId>
-        <artifactId>moviecatalog</artifactId>
-        <version>1.0.0</version>
-        <relativePath /> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-    </parent>-->
-
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -47,8 +36,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
             </plugin>
         </plugins>
         <finalName>${application.name}</finalName>

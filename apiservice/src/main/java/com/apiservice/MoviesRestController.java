@@ -1,4 +1,4 @@
-package com.apiservice.services;
+package com.apiservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,10 +14,10 @@ import java.util.List;
 @RequestMapping(value = "/")
 public class MoviesRestController {
 
-    @Autowired
+    //@Autowired
     private TMDBService tmdbService;
 
-    @RequestMapping(value = "test/", method = RequestMethod.GET)
+    @RequestMapping(value = "movies/list", method = RequestMethod.GET)
     public ResponseEntity<String> listMovies() {
         String movies = tmdbService.getAllMoviesFrom();
         return new ResponseEntity<String>(movies, HttpStatus.OK);
