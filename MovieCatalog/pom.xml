@@ -2,8 +2,13 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+    <parent>
+        <groupId>com.moviecatalog</groupId>
+        <artifactId>moviecatalog</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.moviecrawler</groupId>
     <artifactId>application</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
@@ -11,12 +16,19 @@
 
     <properties>
         <springframework.version>5.0.2.RELEASE</springframework.version>
-        <jackson.version>2.9.3</jackson.version>
         <hibernate.version>5.2.12.Final</hibernate.version>
         <mysql-connector-version>6.0.6</mysql-connector-version>
+        <project.version>1.0.0</project.version>
     </properties>
 
     <dependencies>
+        <!-- Movie Catalog dependencies-->
+        <dependency>
+            <groupId>com.moviecatalog</groupId>
+            <artifactId>APIService</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -73,13 +85,31 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.2</version>
+        </dependency>
 
     </dependencies>
 
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
+                <!--<plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.7.0</version>
@@ -87,7 +117,7 @@
                         <source>1.8</source>
                         <target>1.8</target>
                     </configuration>
-                </plugin>
+                </plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
@@ -102,4 +132,5 @@
         </pluginManagement>
         <finalName>MovieWebApplication</finalName>
     </build>
+
 </project>

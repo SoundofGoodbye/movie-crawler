@@ -24,4 +24,10 @@ public class MoviesRestController {
         List<MovieDTO> movies = moviesService.getAllMoviesFrom(sourceId);
         return new ResponseEntity<List<MovieDTO>>(movies, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "test",method = RequestMethod.GET)
+    public ResponseEntity<String> test() {
+        String movies = moviesService.test();
+        return new ResponseEntity<String>(movies, HttpStatus.OK);
+    }
 }

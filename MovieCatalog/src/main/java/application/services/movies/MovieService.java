@@ -8,4 +8,5 @@ public interface MovieService {
 
     public List<MovieDTO> getAllMoviesFrom(String sourceId);
 
+    String test();
 }

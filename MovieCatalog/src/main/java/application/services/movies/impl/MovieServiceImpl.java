@@ -2,6 +2,9 @@ package application.services.movies.impl;
 
 import application.models.movies.MovieDTO;
 import application.services.movies.MovieService;
+import com.apiservice.services.TMDBService;
+import com.apiservice.services.TMDBServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -17,6 +20,9 @@ public class MovieServiceImpl implements MovieService {
     @Value("${movie.webcrawler.url}")
     private String webcrawlerUrl;
 
+    @Autowired
+    private TMDBService tmdbService;
+
     @Override
     public List<MovieDTO> getAllMoviesFrom(String sourceId) {
         RestTemplate restTemplate = new RestTemplate();
@@ -27,5 +33,10 @@ public class MovieServiceImpl implements MovieService {
                         HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieDTO>>() {
                         });
         return rateResponse.getBody();
+    }
+
+    @Override
+    public String test() {
+        return tmdbService.getAllMoviesFrom();
     }
 }
