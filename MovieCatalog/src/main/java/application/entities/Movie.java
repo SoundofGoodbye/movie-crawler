@@ -5,7 +5,6 @@ package application.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -23,9 +22,9 @@ public class Movie {
 
     //TODO: Refactor to use Actor model
     //@JoinColumn(name = "uniqueId")
-  /*  @Ignore
-    private List<String> actors;*/
+   // private List<String> actors;
 
+  
     public Movie() {
 
     }
