@@ -2,15 +2,14 @@ package application.configuration;
 
 import java.util.Properties;
 
+import com.apiservice.Application;
 import com.apiservice.services.TMDBService;
 import com.apiservice.services.TMDBServiceImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -18,6 +17,9 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.context.ConfigurableWebApplicationContext;
+import org.springframework.web.context.support.AbstractRefreshableWebApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import javax.sql.DataSource;
 
@@ -27,7 +29,10 @@ import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
 
 
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySources({
+        @PropertySource("classpath:apiservice-resources/application.properties"),
+        @PropertySource("classpath:db.properties")
+})
 @EnableTransactionManagement
 @ComponentScans(value = {@ComponentScan("application")})
 public class AppConfig {
