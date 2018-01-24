@@ -1,11 +1,11 @@
 package application.models.movies;
 
-import application.enums.Genre;
 import application.models.actors.ActorDTO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class MovieDTO {
     private String title;
@@ -77,18 +77,23 @@ public class MovieDTO {
         isMovie = movie;
     }
 
+
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof MovieDTO))
-            return false;
-        MovieDTO other = (MovieDTO) obj;
-        if (title != other.title)
-            return false;
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MovieDTO movieDTO = (MovieDTO) o;
+        return Objects.equals(getTitle(), movieDTO.getTitle()) &&
+                Objects.equals(getReleaseDate(), movieDTO.getReleaseDate()) &&
+                Objects.equals(getActors(), movieDTO.getActors()) &&
+                getGenre() == movieDTO.getGenre() &&
+                Objects.equals(getDurationInMin(), movieDTO.getDurationInMin()) &&
+                Objects.equals(getIsMovie(), movieDTO.getIsMovie());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTitle(), getReleaseDate(), getActors(), getGenre(), getDurationInMin(), getIsMovie());
     }
 
     @Override

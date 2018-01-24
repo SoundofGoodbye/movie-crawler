@@ -6,6 +6,7 @@ import application.models.movies.MovieDTO;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class ActorDTO {
     private String name;
@@ -57,17 +58,19 @@ public class ActorDTO {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof MovieDTO))
-            return false;
-        ActorDTO other = (ActorDTO) obj;
-        if (this.name.equals(other.name))
-            return false;
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ActorDTO actorDTO = (ActorDTO) o;
+        return Objects.equals(getName(), actorDTO.getName()) &&
+                Objects.equals(getAge(), actorDTO.getAge()) &&
+                Objects.equals(getBio(), actorDTO.getBio()) &&
+                Objects.equals(getMovies(), actorDTO.getMovies());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, bio, movies);
     }
 
     @Override
