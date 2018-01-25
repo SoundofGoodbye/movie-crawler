@@ -31,8 +31,7 @@ import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
 
 
 @Configuration
-@PropertySources({@PropertySource("classpath:db.properties")
-})
+@PropertySources({@PropertySource("classpath:db.properties")})
 @EnableTransactionManagement
 @ComponentScans(value = {@ComponentScan("application")})
 @Import(BeanConfiguration.class)
