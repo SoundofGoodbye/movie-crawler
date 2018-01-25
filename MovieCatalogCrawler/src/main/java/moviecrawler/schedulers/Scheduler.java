@@ -25,7 +25,6 @@ public class Scheduler {
 
     @Scheduled(fixedRate = 3_600_000)
     public void populateMovies() throws IOException {
-
         for (URLEnums url : URLEnums.values()) {
             final List<MovieDTO> pageLinks = new BasicWebCrawler().getMovieTitles(url.getValue());
             Set<Movie> moviesInDatabase = new HashSet<Movie>(movieRepository.findAll());
