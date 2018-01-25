@@ -3,10 +3,12 @@ package application.configuration;
 import java.util.Properties;
 
 import com.apiservice.Application;
+import com.apiservice.BeanConfiguration;
 import com.apiservice.services.TMDBService;
 import com.apiservice.services.TMDBServiceImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -29,12 +31,11 @@ import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
 
 
 @Configuration
-@PropertySources({
-        @PropertySource("classpath:apiservice-resources/application.properties"),
-        @PropertySource("classpath:db.properties")
+@PropertySources({@PropertySource("classpath:db.properties")
 })
 @EnableTransactionManagement
 @ComponentScans(value = {@ComponentScan("application")})
+@Import(BeanConfiguration.class)
 public class AppConfig {
 
     private static final String ENTITIES_PACKAGE = "application.entities";
@@ -52,7 +53,7 @@ public class AppConfig {
         return dataSource;
     }
 
-    @Bean
+  /*  @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
@@ -60,16 +61,16 @@ public class AppConfig {
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
-    }
+    }*/
 
-    @Bean
+   /* @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(final SessionFactory sessionFactory) {
         final HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory);
 
         return transactionManager;
-    }
+    }*/
 
     final Properties hibernateProperties() {
         Properties props = new Properties();
@@ -100,9 +101,14 @@ public class AppConfig {
         return adapter;
     }
 
-    @Bean
-    public TMDBService tmdbServiceBean() {
-        TMDBService service = new TMDBServiceImpl();
-        return service;
-    }
+    /*@Bean
+    public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
+        PropertyPlaceholderConfigurer configurer = new PropertyPlaceholderConfigurer();
+        Properties property = new Properties();
+        //TODO: Extract properties file location
+        property.setProperty("apiservice.properties", "apiservice-resources/application.properties");
+        configurer.setProperties(property);
+
+        return configurer;
+    }*/
 }

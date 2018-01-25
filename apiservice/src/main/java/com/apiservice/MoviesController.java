@@ -12,14 +12,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/")
-public class MoviesRestController {
+public class MoviesController {
 
     //@Autowired
     private TMDBService tmdbService;
 
     @RequestMapping(value = "movies/list", method = RequestMethod.GET)
     public ResponseEntity<String> listMovies() {
-        String movies = tmdbService.getAllMoviesFrom();
+        String movies = tmdbService.search();
         return new ResponseEntity<String>(movies, HttpStatus.OK);
     }
 }
