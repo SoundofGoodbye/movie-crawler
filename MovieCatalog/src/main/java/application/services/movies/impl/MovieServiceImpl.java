@@ -4,7 +4,9 @@ import application.models.movies.MovieDTO;
 import application.services.movies.MovieService;
 import com.apiservice.services.TMDBService;
 import com.apiservice.services.TMDBServiceImpl;
+import com.apiservice.services.movies.TMDBMovieSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -21,7 +23,8 @@ public class MovieServiceImpl implements MovieService {
     private String webcrawlerUrl;
 
     @Autowired
-    private TMDBService tmdbService;
+    @Qualifier(value = "TMDBSearchMovieService")
+    private TMDBMovieSearchService tmdbMovieSearchService;
 
     @Override
     public List<MovieDTO> getAllMoviesFrom(String sourceId) {
@@ -36,7 +39,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public String test() {
-        return tmdbService.getAllMoviesFrom();
+    public String searchMovie(String query, String language, int page, boolean includeAdults, String region, int year, int primaryReleaseDate) {
+        //TODO: Result should probably be converted here on in the controller that called this method.
+        return tmdbMovieSearchService.getMovie(query, language, page, includeAdults, region, year, primaryReleaseDate);
     }
 }

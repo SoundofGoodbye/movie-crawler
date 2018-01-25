@@ -25,9 +25,13 @@ public class MoviesRestController {
         return new ResponseEntity<List<MovieDTO>>(movies, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "test",method = RequestMethod.GET)
-    public ResponseEntity<String> test() {
-        String movies = moviesService.test();
-        return new ResponseEntity<String>(movies, HttpStatus.OK);
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ResponseEntity<String> searchMovie(@RequestParam(value = "q", required = true) final String query, @RequestParam(value = "lang", required = false) final String language,
+                                              @RequestParam(value = "page", required = false, defaultValue = "0") final int page, @RequestParam(value = "adults", required = false) final boolean includeAdults,
+                                              @RequestParam(value = "region", required = false) final String region, @RequestParam(value = "year", required = false, defaultValue = "0") final int year,
+                                              @RequestParam(value = "releaseDate", required = false, defaultValue = "0") final int primaryReleaseDate) {
+        String movieData = moviesService.searchMovie(query, language, page, includeAdults, region, year, primaryReleaseDate);
+
+        return new ResponseEntity<String>(movieData, HttpStatus.OK);
     }
 }
