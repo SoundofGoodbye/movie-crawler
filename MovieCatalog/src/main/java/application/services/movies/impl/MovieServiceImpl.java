@@ -2,8 +2,6 @@ package application.services.movies.impl;
 
 import application.models.movies.MovieDTO;
 import application.services.movies.MovieService;
-import com.apiservice.services.TMDBService;
-import com.apiservice.services.TMDBServiceImpl;
 import com.apiservice.services.movies.TMDBMovieSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
