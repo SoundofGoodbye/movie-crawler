@@ -8,12 +8,14 @@
         <version>1.0.0</version>
     </parent>
 
+    <!-- Project information-->
     <modelVersion>4.0.0</modelVersion>
     <artifactId>application</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
     <name>MovieWebApplication</name>
 
+    <!-- Properties -->
     <properties>
         <springframework.version>5.0.2.RELEASE</springframework.version>
         <hibernate.version>5.2.12.Final</hibernate.version>
@@ -29,12 +31,22 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- Spring dependencies-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <!-- 2.0.3 not found for some reason-->
+            <version>2.0.2.RELEASE</version>
+        </dependency>
+
+
+        <!-- Delete when FE moved out of application -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -50,7 +62,7 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
+        <!--                                  -->
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -80,13 +92,12 @@
             <version>2.2.0</version>
         </dependency>
 
+        <!-- MSQL Dependencies -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -97,27 +108,17 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.9.2</version>
         </dependency>
-
     </dependencies>
 
+    <!-- Plugins -->
     <build>
         <pluginManagement>
             <plugins>
-                <!--<plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
