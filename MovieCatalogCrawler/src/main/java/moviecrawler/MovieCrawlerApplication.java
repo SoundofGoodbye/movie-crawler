@@ -15,4 +15,10 @@ public class MovieCrawlerApplication {
         SpringApplication.run(MovieCrawlerApplication.class, args);
     }
 
+    @Bean
+    public HibernateJpaSessionFactoryBean sessionFactory(EntityManagerFactory emf) {
+        HibernateJpaSessionFactoryBean fact = new HibernateJpaSessionFactoryBean();
+        fact.setEntityManagerFactory(emf);
+        return fact;
+    }
 }
