@@ -20,13 +20,8 @@ public class FandangoCrawler implements Crawlable {
 
             Document document = Jsoup.connect(url).get();
             Elements linksOnPage = document.select("li.visual-item");
-
-            int counter = 0;
+            
             for (Element page : linksOnPage) {
-                counter++;
-                if (counter == 3) {
-                    break;
-                }
                 final Elements select = page.getElementsByClass("visual-container");
                 final Element element = select.get(0);
                 final String movieDetailsUrl = element.attr("href");
