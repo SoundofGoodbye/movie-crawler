@@ -15,15 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/movies")
 public class MoviesRestController {
-
     @Autowired
     private MovieService moviesService;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<MovieDTO>> listMovies(@RequestParam("sourceId") String sourceId) {
-        List<MovieDTO> movies = moviesService.getAllMoviesFrom(sourceId);
-        return new ResponseEntity<List<MovieDTO>>(movies, HttpStatus.OK);
-    }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ResponseEntity<String> searchMovie(@RequestParam(value = "q", required = true) final String query, @RequestParam(value = "lang", required = false) final String language,

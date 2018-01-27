@@ -16,25 +16,12 @@ import java.util.List;
 
 @Service("movieService")
 public class MovieServiceImpl implements MovieService {
-
     @Value("${movie.webcrawler.url}")
     private String webcrawlerUrl;
 
     @Autowired
     @Qualifier(value = "TMDBSearchMovieService")
     private TMDBMovieSearchService tmdbMovieSearchService;
-
-    @Override
-    public List<MovieDTO> getAllMoviesFrom(String sourceId) {
-        RestTemplate restTemplate = new RestTemplate();
-        String url = webcrawlerUrl + "/movies";
-
-        ResponseEntity<List<MovieDTO>> rateResponse =
-                restTemplate.exchange(url,
-                        HttpMethod.GET, null, new ParameterizedTypeReference<List<MovieDTO>>() {
-                        });
-        return rateResponse.getBody();
-    }
 
     @Override
     public String searchMovie(String query, String language, int page, boolean includeAdults, String region, int year, int primaryReleaseDate) {
