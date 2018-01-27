@@ -1,15 +1,13 @@
 package com.apiservice.services;
 
 public interface TMDBService {
-    public String query(String searchType, String params);
-
     /**
      * Text based search is the most common way. You provide a query string and we provide the closest match.
      * Searching by text takes into account all original, translated, alternative names and titles.
      *
      * @return
      */
-    public String search();
+    String search(String searchOption, String query);
 
     /**
      * Sometimes it useful to search for movies and TV shows based on filters or definable values like ratings,

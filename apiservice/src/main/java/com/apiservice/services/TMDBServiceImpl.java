@@ -13,11 +13,12 @@ public class TMDBServiceImpl implements TMDBService {
     @Value("${tmdb.api.key}")
     private String apiKey;
     private String url = "https://api.themoviedb.org/3/";
+    private static final String SEARCH_QUERY = "search/";
 
-    public String query(String searchType, String params) {
+    private String query(final String searchType, final String searchOption, final String params) {
         RestTemplate restTemplate = new RestTemplate();
 
-        String query = getUrl() + searchType + "?api_key=" + apiKey + params;
+        String query = getUrl() + searchType + searchOption +"?api_key=" + apiKey + params;
 
         ResponseEntity<String> rateResponse =
                 restTemplate.exchange(query, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
@@ -26,8 +27,8 @@ public class TMDBServiceImpl implements TMDBService {
     }
 
     @Override
-    public String search() {
-        return null;
+    public String search(final String searchOption, final String query) {
+        return query(SEARCH_QUERY, searchOption, query);
     }
 
     @Override
