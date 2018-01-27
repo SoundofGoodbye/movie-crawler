@@ -1,28 +1,22 @@
 package com.apiservice.services.movies.impl;
 
 import com.apiservice.builders.queries.SearchMovieQueryBuilder;
-import com.apiservice.constants.TMDBConstants;
-import com.apiservice.services.TMDBService;
+import com.apiservice.engine.SearchEngine;
 import com.apiservice.services.movies.TMDBMovieSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 public class TMDBMovieSearchServiceImpl implements TMDBMovieSearchService {
-    private static final String QUERY_URL = "search/movie";
+    private static final String SEARCH_OPTION = "movie";
     private SearchMovieQueryBuilder queryBuilder;
 
     @Autowired()
-    private TMDBService apiService;
+    private SearchEngine searchEngine;
 
     @Override
     public String getMovie(String query, String language, int page, boolean includeAdults, String region, int year, int primaryReleaseDate) {
         queryBuilder = new SearchMovieQueryBuilder();
-        String tmdbMovieSearchQuery = queryBuilder.buildQuery(query, language, page, includeAdults, region, year, primaryReleaseDate);
+        String tmdbMovieSearchQuery = queryBuilder.buildQuery(includeAdults, region, year, primaryReleaseDate);
 
-        return apiService.query(getSearchType(), tmdbMovieSearchQuery);
-    }
-
-    public String getSearchType() {
-        return QUERY_URL;
+        return searchEngine.searchActors(SEARCH_OPTION, query + tmdbMovieSearchQuery, language, page);
     }
 }
