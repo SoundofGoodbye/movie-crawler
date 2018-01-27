@@ -19,8 +19,4 @@ public class TMDBMovieSearchServiceImpl implements TMDBMovieSearchService {
 
         return searchEngine.searchActors(SEARCH_OPTION, query + tmdbMovieSearchQuery, language, page);
     }
-
-    public String getSearchOption() {
-        return SEARCH_OPTION;
-    }
 }
