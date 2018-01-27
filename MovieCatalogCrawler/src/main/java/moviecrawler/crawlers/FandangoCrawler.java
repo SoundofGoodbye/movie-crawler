@@ -20,7 +20,7 @@ public class FandangoCrawler implements Crawlable {
 
             Document document = Jsoup.connect(url).get();
             Elements linksOnPage = document.select("li.visual-item");
-            
+
             for (Element page : linksOnPage) {
                 final Elements select = page.getElementsByClass("visual-container");
                 final Element element = select.get(0);

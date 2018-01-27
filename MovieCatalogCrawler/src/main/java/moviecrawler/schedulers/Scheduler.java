@@ -27,27 +27,34 @@ public class Scheduler {
     @Scheduled(fixedDelayString = "${schedule.timer}")
     @Transactional
     public void populateMovies() throws IOException {
+        Crawler crawler = new BasicWebCrawler();
+
         for (URLEnums url : URLEnums.values()) {
-            Crawler crawler = new BasicWebCrawler();
             Set<Movie> moviesInDatabase = new HashSet<>(movieRepository.findAll());
             final List<String> crawledMovies = crawler.getMovies(url);
 
             List<String> moviesInDatabaseTitles = moviesInDatabase.stream()
                     .map(Movie::getTitle)
                     .collect(Collectors.toList());
+            
+            filterAndSaveNewMovies(crawledMovies, moviesInDatabaseTitles);
 
-            //Filter and save the new movie titles
-            crawledMovies.stream()
-                    .filter(m -> !moviesInDatabaseTitles.contains(m))
-                    .map(Movie::new)
-                    .forEach(m -> movieRepository.saveAndFlush(m));
-
-            //Delete the expired movies
-            moviesInDatabaseTitles.stream()
-                    .filter(m -> !crawledMovies.contains(m))
-                    .forEach(m -> movieRepository.deleteMovieByTitle(m));
+            deleteExpiredMovies(crawledMovies, moviesInDatabaseTitles);
 
         }
+    }
+
+    private void filterAndSaveNewMovies(List<String> crawledMovies, List<String> moviesInDatabaseTitles) {
+        crawledMovies.stream()
+                .filter(m -> !moviesInDatabaseTitles.contains(m))
+                .map(Movie::new)
+                .forEach(m -> movieRepository.saveAndFlush(m));
+    }
+
+    private void deleteExpiredMovies(List<String> crawledMovies, List<String> moviesInDatabaseTitles) {
+        moviesInDatabaseTitles.stream()
+                .filter(m -> !crawledMovies.contains(m))
+                .forEach(m -> movieRepository.deleteMovieByTitle(m));
     }
 
 }
