@@ -38,7 +38,7 @@ Thumbs.db
 target/
 .idea/
 .sass-cache/
-.node_modules/
+node_modules/
 
 # IntelliJ Idea Generated Files
 *.iml
