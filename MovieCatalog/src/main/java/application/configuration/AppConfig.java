@@ -52,7 +52,7 @@ public class AppConfig {
         return dataSource;
     }
 
-  /*  @Bean
+   /* @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
@@ -60,14 +60,13 @@ public class AppConfig {
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
-    }*/
+    }
 
-   /* @Bean
+    @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(final SessionFactory sessionFactory) {
         final HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory);
-
         return transactionManager;
     }*/
 
@@ -99,15 +98,4 @@ public class AppConfig {
 
         return adapter;
     }
-
-    /*@Bean
-    public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
-        PropertyPlaceholderConfigurer configurer = new PropertyPlaceholderConfigurer();
-        Properties property = new Properties();
-        //TODO: Extract properties file location
-        property.setProperty("apiservice.properties", "apiservice-resources/application.properties");
-        configurer.setProperties(property);
-
-        return configurer;
-    }*/
 }
