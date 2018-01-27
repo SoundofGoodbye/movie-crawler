@@ -1,0 +1,25 @@
+{
+  "name": "moviecatalogfrontend",
+  "version": "1.0.0",
+  "description": "Front end for MovieCatalog project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoundofGoodbye/movie-crawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoundofGoodbye/movie-crawler/issues"
+  },
+  "homepage": "https://github.com/SoundofGoodbye/movie-crawler#readme",
+  "dependencies": {
+    "express": "~4.7.2",
+    "morgan": "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2"
+  }
+}
