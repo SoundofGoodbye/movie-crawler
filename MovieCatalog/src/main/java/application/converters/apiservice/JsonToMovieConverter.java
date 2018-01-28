@@ -15,7 +15,7 @@ public class JsonToMovieConverter implements Converter<String, MovieDTO> {
 
         try {
             JsonNode rawMoviesData = mapper.readValue(movieJson, JsonNode.class);
-            JsonNode movieJsonNode = rawMoviesData.get("results").get(1);
+            JsonNode movieJsonNode = rawMoviesData.get("results").get(0);
             String movieJsonString = movieJsonNode.toString();
             movie = mapper.readValue(movieJsonString, MovieDTO.class);
         } catch (IOException e) {
