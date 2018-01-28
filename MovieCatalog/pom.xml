@@ -45,24 +45,6 @@
             <version>2.0.2.RELEASE</version>
         </dependency>
 
-
-        <!-- Delete when FE moved out of application -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-        <!--                                  -->
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
