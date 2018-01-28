@@ -2,34 +2,39 @@ package application.configuration;
 
 import java.util.Properties;
 
-import application.entities.Movie;
-import org.apache.commons.dbcp2.BasicDataSource;
+import com.apiservice.Application;
+import com.apiservice.BeanConfiguration;
+import com.apiservice.services.TMDBService;
+import com.apiservice.services.TMDBServiceImpl;
 import org.hibernate.SessionFactory;
-import org.hibernate.internal.SessionFactoryImpl;
-import org.hibernate.service.ServiceRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.context.ConfigurableWebApplicationContext;
+import org.springframework.web.context.support.AbstractRefreshableWebApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import javax.sql.DataSource;
 
-import static org.hibernate.cfg.Environment.*;
+import static org.hibernate.cfg.AvailableSettings.DIALECT;
+import static org.hibernate.cfg.AvailableSettings.HBM2DDL_AUTO;
+import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
+
 
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySources({@PropertySource("classpath:db.properties")})
 @EnableTransactionManagement
 @ComponentScans(value = {@ComponentScan("application")})
+@Import(BeanConfiguration.class)
 public class AppConfig {
 
     private static final String ENTITIES_PACKAGE = "application.entities";
@@ -47,7 +52,7 @@ public class AppConfig {
         return dataSource;
     }
 
-    @Bean
+   /* @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
@@ -62,9 +67,8 @@ public class AppConfig {
     public HibernateTransactionManager transactionManager(final SessionFactory sessionFactory) {
         final HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory);
-
         return transactionManager;
-    }
+    }*/
 
     final Properties hibernateProperties() {
         Properties props = new Properties();

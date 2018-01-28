@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesService', function($scope, MoviesService) {
-    var self = this;
+  /*  var self = this;
     self.movie={title:'',year:'',actors: []};
     self.movies=[];
 
@@ -17,5 +17,5 @@ angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesSe
                     console.error('Error while fetching Movies');
                 }
             );
-    }
+    }*/
 }
