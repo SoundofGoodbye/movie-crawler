@@ -1,9 +1,4 @@
 package application.entities;
-
-
-
-import application.models.movies.Genre;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -35,10 +30,8 @@ public class Movie {
 
     private String originalTitle;
 
-    @ElementCollection
-    @CollectionTable(name="Genres", joinColumns=@JoinColumn(name="genreIds"))
-    @Column(name="genreIds")
-    private List<Integer> genreIds;
+    @OneToMany(mappedBy = "id")
+    private List<Genre> genreIds;
 
     private String backdropPath;
 
@@ -128,11 +121,11 @@ public class Movie {
         this.originalTitle = originalTitle;
     }
 
-    public List<Integer> getGenreIds() {
+    public List<application.entities.Genre> getGenreIds() {
         return genreIds;
     }
 
-    public void setGenreIds(List<Integer> genreIds) {
+    public void setGenreIds(List<application.entities.Genre> genreIds) {
         this.genreIds = genreIds;
     }
 

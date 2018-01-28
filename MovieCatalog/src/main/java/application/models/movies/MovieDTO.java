@@ -1,5 +1,7 @@
 package application.models.movies;
 
+import application.entities.Genre;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -29,7 +31,7 @@ public class MovieDTO {
 
     private String original_title;
 
-    private List<Integer> genre_ids;
+    private List<application.entities.Genre> genre_ids;
 
     private String backdrop_path;
 
@@ -111,11 +113,11 @@ public class MovieDTO {
         this.original_title = original_title;
     }
 
-    public List<Integer> getGenre_ids() {
+    public List<application.entities.Genre> getGenre_ids() {
         return genre_ids;
     }
 
-    public void setGenre_ids(List<Integer> genre_ids) {
+    public void setGenre_ids(List<Genre> genre_ids) {
         this.genre_ids = genre_ids;
     }
 
