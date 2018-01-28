@@ -18,6 +18,7 @@ public class SearchEngineImpl implements SearchEngine {
         return apiService.search(searchOption, queryBuilder.buildQuery(query, language, page));
     }
 
+    @Override
     public String searchMovie(final String searchOption, final String query, final String language, int page) {
         SearchEngineQueryBuilder queryBuilder = new SearchEngineQueryBuilder();
 
