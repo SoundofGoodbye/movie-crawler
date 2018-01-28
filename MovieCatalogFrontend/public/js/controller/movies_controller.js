@@ -3,10 +3,8 @@
 angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesService', function($scope, MoviesService) {
     var self = this;
     var POSTER_IMAGE_IMDB_URL = "http://image.tmdb.org/t/p/w780/";
-    var myImage = new Image(100, 200);
 
     $scope.movie={title:'',poster_path:'',release_date:'',actors: [],overview:''};
-    $scope.movies=[];
 
     fetchMovie('Spider-Man');
 
