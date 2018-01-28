@@ -7,17 +7,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-public class JsonToMovieConverter implements Converter {
+public class JsonToMovieConverter implements Converter<String, MovieDTO> {
 
-    public MovieDTO convertApiServiceResultToMovieDTO(String movieJson) throws IOException {
+    public MovieDTO convert(String movieJson) {
         ObjectMapper mapper = new ObjectMapper();
+        MovieDTO movie = null;
 
-        JsonNode rawMoviesData = mapper.readValue(movieJson, JsonNode.class);
-        JsonNode movieJsonNode = rawMoviesData.get("results").get(1);
-        String movieJsonString = movieJsonNode.toString();
-        MovieDTO movie = mapper.readValue(movieJsonString, MovieDTO.class);
+        try {
+            JsonNode rawMoviesData = mapper.readValue(movieJson, JsonNode.class);
+            JsonNode movieJsonNode = rawMoviesData.get("results").get(1);
+            String movieJsonString = movieJsonNode.toString();
+            movie = mapper.readValue(movieJsonString, MovieDTO.class);
+        } catch (IOException e) {
+            //TODO: Add log here
+            e.printStackTrace();
+        }
 
         return movie;
     }
-
 }

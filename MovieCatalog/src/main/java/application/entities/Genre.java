@@ -5,6 +5,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Genre {
+
+    public Genre(Integer id) {
+        this.id = id;
+    }
+
     @Id
     private Integer id;
 
