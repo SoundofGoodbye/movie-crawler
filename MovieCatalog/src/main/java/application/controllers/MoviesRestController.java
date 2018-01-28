@@ -1,5 +1,8 @@
 package application.controllers;
 
+import application.converters.Converter;
+import application.converters.apiservice.JsonToMovieConverter;
+import application.models.movies.MovieDTO;
 import application.services.movies.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +19,13 @@ public class MoviesRestController {
     private MovieService moviesService;
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public ResponseEntity<String> searchMovie(@RequestParam(value = "q", required = true) final String query, @RequestParam(value = "lang", required = false) final String language,
-                                              @RequestParam(value = "page", required = false, defaultValue = "0") final int page, @RequestParam(value = "adults", required = false) final boolean includeAdults,
-                                              @RequestParam(value = "region", required = false) final String region, @RequestParam(value = "year", required = false, defaultValue = "0") final int year,
-                                              @RequestParam(value = "releaseDate", required = false, defaultValue = "0") final int primaryReleaseDate) {
+    public ResponseEntity<MovieDTO> searchMovie(@RequestParam(value = "q", required = true) final String query, @RequestParam(value = "lang", required = false) final String language,
+                                                @RequestParam(value = "page", required = false, defaultValue = "0") final int page, @RequestParam(value = "adults", required = false) final boolean includeAdults,
+                                                @RequestParam(value = "region", required = false) final String region, @RequestParam(value = "year", required = false, defaultValue = "0") final int year,
+                                                @RequestParam(value = "releaseDate", required = false, defaultValue = "0") final int primaryReleaseDate) {
         String movieData = moviesService.searchMovie(query, language, page, includeAdults, region, year, primaryReleaseDate);
 
-        return new ResponseEntity<String>(movieData, HttpStatus.OK);
+        Converter<String, MovieDTO> converter = new JsonToMovieConverter();
+        return new ResponseEntity<MovieDTO>(converter.convert(movieData), HttpStatus.OK);
     }
 }

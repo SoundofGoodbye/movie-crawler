@@ -1,32 +1,76 @@
 package application.models.movies;
 
-import application.models.actors.ActorDTO;
+import application.entities.Genre;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Objects;
+
 
 public class MovieDTO {
-    private String title;
-    //TODO use actual date instead of string
-    private String releaseDate;
-    private List<ActorDTO> actors;
-    private Genre genre;
-    private Integer durationInMin;
-    private Boolean isMovie;
 
     public MovieDTO() {
-        this.actors = new ArrayList<>();
     }
 
-    public MovieDTO(String title, String releaseDate, List<ActorDTO> actors, Genre genre, Integer durationInMin, Boolean isMovie) {
-        this.title = title;
-        this.releaseDate = releaseDate;
-        this.actors = actors;
-        this.genre = genre;
-        this.durationInMin = durationInMin;
-        this.isMovie = isMovie;
+    public long id;
+
+    
+    private int vote_count;
+
+    private boolean video;
+
+    private double vote_average;
+
+    private String title;
+
+    private double popularity;
+
+    private String poster_path;
+
+    private String original_language;
+
+    private String original_title;
+
+    private List<Integer> genre_ids;
+
+    private String backdrop_path;
+
+    private boolean adult;
+
+    private String overview;
+
+    private LocalDate release_date;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getVote_count() {
+        return vote_count;
+    }
+
+    public void setVote_count(int vote_count) {
+        this.vote_count = vote_count;
+    }
+
+    public boolean isVideo() {
+        return video;
+    }
+
+    public void setVideo(boolean video) {
+        this.video = video;
+    }
+
+    public double getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
     }
 
     public String getTitle() {
@@ -37,68 +81,96 @@ public class MovieDTO {
         this.title = title;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public double getPopularity() {
+        return popularity;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setPopularity(double popularity) {
+        this.popularity = popularity;
     }
 
-    public List<ActorDTO> getActors() {
-        return actors;
+    public String getPoster_path() {
+        return poster_path;
     }
 
-    public void setActors(List<ActorDTO> actors) {
-        this.actors = actors;
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public String getOriginal_language() {
+        return original_language;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setOriginal_language(String original_language) {
+        this.original_language = original_language;
     }
 
-    public Integer getDurationInMin() {
-        return durationInMin;
+    public String getOriginal_title() {
+        return original_title;
     }
 
-    public void setDurationInMin(Integer durationInMin) {
-        this.durationInMin = durationInMin;
+    public void setOriginal_title(String original_title) {
+        this.original_title = original_title;
     }
 
-    public Boolean getIsMovie() {
-        return isMovie;
+    public List<Integer> getGenre_ids() {
+        return genre_ids;
     }
 
-    public void setIsMovie(Boolean movie) {
-        isMovie = movie;
+    public void setGenre_ids(List<Integer> genre_ids) {
+        this.genre_ids = genre_ids;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MovieDTO movieDTO = (MovieDTO) o;
-        return Objects.equals(getTitle(), movieDTO.getTitle()) &&
-                Objects.equals(getReleaseDate(), movieDTO.getReleaseDate()) &&
-                Objects.equals(getActors(), movieDTO.getActors()) &&
-                getGenre() == movieDTO.getGenre() &&
-                Objects.equals(getDurationInMin(), movieDTO.getDurationInMin()) &&
-                Objects.equals(getIsMovie(), movieDTO.getIsMovie());
+    public String getBackdrop_path() {
+        return backdrop_path;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getTitle(), getReleaseDate(), getActors(), getGenre(), getDurationInMin(), getIsMovie());
+    public void setBackdrop_path(String backdrop_path) {
+        this.backdrop_path = backdrop_path;
+    }
+
+    public boolean isAdult() {
+        return adult;
+    }
+
+    public void setAdult(boolean adult) {
+        this.adult = adult;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public LocalDate getRelease_date() {
+        return release_date;
+    }
+
+    public void setRelease_date(String releaseDateString) {
+        LocalDate releaseDate = LocalDate.parse(releaseDateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.release_date = releaseDate;
     }
 
     @Override
     public String toString() {
-        return "MovieDTO [title=" + getTitle() + ", genre= " + getGenre() + ", releaseDate=" + getReleaseDate() + ", actors[=" + Arrays.asList(actors) + ", duration=" + ("" + getDurationInMin() / 60 + "hr " + getDurationInMin() % 60 + "min")
-                + "]" + "]";
+        return "MovieDTO{" +
+                "id=" + id +
+                ", vote_count=" + vote_count +
+                ", video=" + video +
+                ", vote_average=" + vote_average +
+                ", title='" + title + '\'' +
+                ", popularity=" + popularity +
+                ", poster_path='" + poster_path + '\'' +
+                ", original_language='" + original_language + '\'' +
+                ", original_title='" + original_title + '\'' +
+                ", genre_ids=" + genre_ids +
+                ", backdrop_path='" + backdrop_path + '\'' +
+                ", adult=" + adult +
+                ", overview='" + overview + '\'' +
+                ", release_date=" + release_date +
+                '}';
     }
 }
