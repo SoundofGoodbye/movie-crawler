@@ -1,6 +1,5 @@
 package com.apiservice.controllers;
 
-import com.apiservice.engine.SearchEngine;
 import com.apiservice.services.actors.TMDBActorsSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

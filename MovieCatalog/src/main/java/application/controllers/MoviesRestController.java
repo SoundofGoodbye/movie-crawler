@@ -26,6 +26,6 @@ public class MoviesRestController {
         String movieData = moviesService.searchMovie(query, language, page, includeAdults, region, year, primaryReleaseDate);
 
         Converter<String, MovieDTO> converter = new JsonToMovieConverter();
-        return new ResponseEntity<MovieDTO>(converter.convert(movieData), HttpStatus.OK);
+        return new ResponseEntity<>(converter.convert(movieData), HttpStatus.OK);
     }
 }

@@ -1,7 +1,6 @@
 package com.apiservice.services.actors.impl;
 
 import com.apiservice.engine.SearchEngine;
-import com.apiservice.services.TMDBService;
 import com.apiservice.services.actors.TMDBActorsSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 

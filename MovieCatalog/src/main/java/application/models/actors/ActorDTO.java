@@ -1,13 +1,14 @@
 package application.models.actors;
 
 import application.entities.Movie;
-import application.models.movies.MovieDTO;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ActorDTO {
     private String name;
     private Integer age;
