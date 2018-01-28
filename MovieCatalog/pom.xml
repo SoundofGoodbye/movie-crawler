@@ -2,27 +2,51 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+    <parent>
+        <groupId>com.moviecatalog</groupId>
+        <artifactId>moviecatalog</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <!-- Project information-->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.moviecrawler</groupId>
     <artifactId>application</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
     <name>MovieWebApplication</name>
 
+    <!-- Properties -->
     <properties>
         <springframework.version>5.0.2.RELEASE</springframework.version>
-        <jackson.version>2.9.3</jackson.version>
         <hibernate.version>5.2.12.Final</hibernate.version>
         <mysql-connector-version>6.0.6</mysql-connector-version>
+        <project.version>1.0.0</project.version>
     </properties>
 
     <dependencies>
+        <!-- Movie Catalog dependencies-->
+        <dependency>
+            <groupId>com.moviecatalog</groupId>
+            <artifactId>APIService</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Spring dependencies-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <!-- 2.0.3 not found for some reason-->
+            <version>2.0.2.RELEASE</version>
+        </dependency>
+
+
+        <!-- Delete when FE moved out of application -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -38,7 +62,7 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
+        <!--                                  -->
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -55,11 +79,6 @@
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <version>1.0.1.Final</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>2.0.2.RELEASE</version>
-        </dependency>
 
         <!-- Apache Commons DBCP -->
         <dependency>
@@ -68,26 +87,41 @@
             <version>2.2.0</version>
         </dependency>
 
+        <!-- MSQL Dependencies -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-version}</version>
         </dependency>
 
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.0.2.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
+    <!-- Plugins -->
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
@@ -102,4 +136,5 @@
         </pluginManagement>
         <finalName>MovieWebApplication</finalName>
     </build>
+
 </project>

@@ -22,11 +22,11 @@ public class Movie {
     private String releaseDate;
 
     //TODO: Refactor to use Actor model
-   // @OneToOne
     //@JoinColumn(name = "uniqueId")
   /*  @Ignore
     private List<String> actors;*/
 
+  
     public Movie() {
 
     }
