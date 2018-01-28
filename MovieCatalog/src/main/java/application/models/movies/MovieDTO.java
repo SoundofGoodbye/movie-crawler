@@ -1,7 +1,5 @@
 package application.models.movies;
 
-import application.entities.Genre;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -14,7 +12,7 @@ public class MovieDTO {
 
     public long id;
 
-    
+
     private int vote_count;
 
     private boolean video;
