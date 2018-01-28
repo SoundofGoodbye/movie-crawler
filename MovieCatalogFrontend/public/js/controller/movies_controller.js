@@ -2,8 +2,8 @@
 
 angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesService', function($scope, MoviesService) {
     var self = this;
-    self.movie={title:'',year:'',actors: []};
-    self.movies=[];
+    $scope.movie={title:'',year:'',actors: []};
+    $scope.movies=[];
 
     fetchMovie('Spider-Man');
 
@@ -11,7 +11,7 @@ angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesSe
         MoviesService.fetchMovie(movie)
             .then(
                 function(d) {
-                    self.movies = d;
+                    $scope.movies = d;
                 },
                 function(errResponse){
                     console.error('Error while fetching Movies');

@@ -17,6 +17,6 @@ public class TMDBMovieSearchServiceImpl implements TMDBMovieSearchService {
         queryBuilder = new SearchMovieQueryBuilder();
         String tmdbMovieSearchQuery = queryBuilder.buildQuery(includeAdults, region, year, primaryReleaseDate);
 
-        return searchEngine.searchActors(SEARCH_OPTION, query + tmdbMovieSearchQuery, language, page);
+        return searchEngine.searchMovie(SEARCH_OPTION, query + tmdbMovieSearchQuery, language, page);
     }
 }
