@@ -2,7 +2,10 @@
 
 angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesService', function($scope, MoviesService) {
     var self = this;
-    $scope.movie={title:'',year:'',actors: []};
+    var POSTER_IMAGE_IMDB_URL = "http://image.tmdb.org/t/p/w780/";
+    var myImage = new Image(100, 200);
+
+    $scope.movie={title:'',poster_path:'',release_date:'',actors: [],overview:''};
     $scope.movies=[];
 
     fetchMovie('Spider-Man');
@@ -11,7 +14,10 @@ angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesSe
         MoviesService.fetchMovie(movie)
             .then(
                 function(d) {
-                    $scope.movies = d;
+                    $scope.movie.title = d.title;
+                    $scope.movie.poster_path = POSTER_IMAGE_IMDB_URL + d.poster_path;
+                    $scope.movie.release_date = d.release_date;
+                    $scope.movie.overview = d.overview;
                 },
                 function(errResponse){
                     console.error('Error while fetching Movies');
