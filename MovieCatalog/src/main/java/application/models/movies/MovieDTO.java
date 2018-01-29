@@ -12,7 +12,6 @@ public class MovieDTO {
 
     public long id;
 
-
     private int vote_count;
 
     private boolean video;
