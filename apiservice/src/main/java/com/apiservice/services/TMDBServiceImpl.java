@@ -15,7 +15,7 @@ public class TMDBServiceImpl implements TMDBService {
     private String query(final String searchType, final String searchOption, final String params) {
         RestTemplate restTemplate = new RestTemplate();
 
-        String query = URL + searchType + searchOption +"?api_key=" + apiKey + params;
+        String query = URL + searchType + searchOption + "?api_key=" + apiKey + params;
 
         ResponseEntity<String> rateResponse =
                 restTemplate.exchange(query, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
@@ -38,8 +38,9 @@ public class TMDBServiceImpl implements TMDBService {
         return null;
     }
 
-       public String getApiKey() {
-        return apiKey;
+    @Override
+    public String get(final String address, final String params) {
+        return query(address, "", params);
     }
 
     public void setApiKey(String apiKey) {

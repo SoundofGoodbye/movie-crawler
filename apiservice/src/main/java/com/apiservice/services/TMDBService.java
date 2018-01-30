@@ -24,4 +24,6 @@ public interface TMDBService {
      * @return
      */
     public String find();
+
+    String get(final String address, final String params);
 }

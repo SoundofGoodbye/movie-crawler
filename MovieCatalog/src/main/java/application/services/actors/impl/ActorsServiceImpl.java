@@ -11,7 +11,12 @@ public class ActorsServiceImpl implements ActorsService {
     private TMDBActorsSearchService actorsSearchService;
 
     @Override
-    public String getActor(final String query, final String language, int page, boolean includeAdult, final String region) {
+    public String searchActor(final String query, final String language, int page, boolean includeAdult, final String region) {
         return actorsSearchService.getActor(query, language, page, includeAdult, region);
+    }
+
+    @Override
+    public String getActor(final String actorId, final String language, final String appendToResponse) {
+        return actorsSearchService.getActorDetails(actorId, language, appendToResponse);
     }
 }
