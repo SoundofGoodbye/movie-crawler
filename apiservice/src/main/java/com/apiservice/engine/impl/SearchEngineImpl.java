@@ -12,16 +12,16 @@ public class SearchEngineImpl implements SearchEngine {
     private TMDBService apiService;
 
     @Override
-    public String searchActors(final String searchOption, final String query, final String language, int page) {
+    public String searchActors(final String address, final String query, final String language, int page) {
         SearchEngineQueryBuilder queryBuilder = new SearchEngineQueryBuilder();
 
-        return apiService.search(searchOption, queryBuilder.buildQuery(query, language, page));
+        return apiService.search(address, queryBuilder.buildQuery(query, language, page));
     }
 
     @Override
-    public String searchMovie(final String searchOption, final String query, final String language, int page) {
+    public String searchMovie(final String address, final String query, final String language, int page) {
         SearchEngineQueryBuilder queryBuilder = new SearchEngineQueryBuilder();
 
-        return apiService.search(searchOption, queryBuilder.buildQuery(query, language, page));
+        return apiService.search(address, queryBuilder.buildQuery(query, language, page));
     }
 }

@@ -9,8 +9,14 @@ public class GetEngineImpl implements GetEngine {
     private TMDBService apiService;
 
     @Override
-    public String getActors(final String address, final String language, final String appendToResponse) {
+    public String getActorDetails(final String address, final String language, final String appendToResponse) {
 
+        String params = "&language=" + language + "&append_to_response=" + appendToResponse;
+        return apiService.get(address, params);
+    }
+
+    @Override
+    public String getMovieDetails(final String address, final String language, final String appendToResponse) {
         String params = "&language=" + language + "&append_to_response=" + appendToResponse;
         return apiService.get(address, params);
     }
