@@ -2,6 +2,7 @@ package application.controllers;
 
 import application.converters.Converter;
 import application.converters.apiservice.JsonToMovieConverter;
+import application.converters.apiservice.JsonToMovieDetailsConverter;
 import application.models.movies.MovieDTO;
 import application.services.movies.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,16 @@ public class MoviesRestController {
         Converter<String, MovieDTO> converter = new JsonToMovieConverter();
         return new ResponseEntity<>(converter.convert(movieData), HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/movie", method = RequestMethod.GET)
+    public ResponseEntity<MovieDTO> getMovieDetails(@RequestParam(value = "movieId", required = true) final String movieId,
+                                                    @RequestParam(value = "lang", required = false) final String language,
+                                                    @RequestParam(value = "appendToReponse", required = false) final String appendToResponse) {
+
+        String movieData = moviesService.getMovie(movieId, language, appendToResponse);
+
+        Converter<String, MovieDTO> converter = new JsonToMovieDetailsConverter();
+        return new ResponseEntity<>(converter.convert(movieData), HttpStatus.OK);
+    }
+
 }
