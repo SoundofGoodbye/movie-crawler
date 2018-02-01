@@ -3,8 +3,10 @@ package application.models.actors;
 import application.entities.Movie;
 import application.models.movies.MovieDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,6 +30,23 @@ public class ActorDTO {
         this.age = age;
         this.movies = movies;
         this.biography = bio;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setBirthday(String birthday) {
+        LocalDate birthDayDate = LocalDate.parse(birthday, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.birthday = birthDayDate;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
     }
 
     public String getName() {

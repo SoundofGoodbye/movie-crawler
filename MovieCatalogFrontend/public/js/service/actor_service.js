@@ -14,16 +14,18 @@ angular.module('MovieWebApp').factory('ActorService', ['$http', '$q', function (
     return factory;
 
     function getActorDetails(query) {
-        return call(SEARCH_TYPE, query);
+        var url = SEARCH_TYPE + "?actorId=" + query;
+        return call(url);
     }
 
     function searchActor(query) {
-        return call(SEARCH_OPTION, query);
+        var url = SEARCH_OPTION + "?q=" + query;
+        return call(url);
     }
 
-    function call(address, query) {
+    function call(query) {
         var deferred = $q.defer();
-        $http.get(REST_SERVICE_URI + address + "?q=" + query)
+        $http.get(REST_SERVICE_URI + query)
             .then(
                 function (response) {
                     deferred.resolve(response.data);

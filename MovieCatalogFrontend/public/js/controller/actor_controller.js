@@ -1,13 +1,17 @@
 'use strict';
 
-angular.module('MovieWebApp').controller('ActorController', ['$scope', 'ActorService', function ($scope, ActorService) {
-    $scope.actor = {name: ''};
+angular.module('MovieWebApp').controller('ActorController', ['$scope', 'ActorService', 'Actor', function ($scope, ActorService, Actor) {
+    $scope.actor = new Actor();
 
-    function getActorDetails(actor) {
-        ActorService.getActorDetails(actor)
+    getActorDetails("100");
+    searchActor("Johnny Depp");
+
+    function getActorDetails(query) {
+        console.log("Controller");
+        ActorService.getActorDetails(query)
             .then(
                 function (value) {
-                    $scope.actor.name = value.name;
+                    $scope.actor = value;
                 },
                 function (errResponse) {
                     console.error('Error while fetching Actor details');
@@ -19,7 +23,7 @@ angular.module('MovieWebApp').controller('ActorController', ['$scope', 'ActorSer
         ActorService.searchActor(query)
             .then(
                 function (value) {
-                    $scope.actor.name = value.name;
+                    $scope.Actor = value;
                 },
                 function (errResponse) {
                     console.error('Error while searching for Actor');
