@@ -1,8 +1,10 @@
 package application.models.actors;
 
 import application.entities.Movie;
+import application.models.movies.MovieDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,20 +12,22 @@ import java.util.Objects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ActorDTO {
+    private Integer id;
     private String name;
     private Integer age;
-    private String bio;
-    private List<Movie> movies;
+    private LocalDate birthday;
+    private String biography;
+    private List<MovieDTO> movies;
 
     public ActorDTO() {
         this.movies = new ArrayList<>();
     }
 
-    public ActorDTO(String name, Integer age, List<Movie> movies, String bio) {
+    public ActorDTO(String name, Integer age, List<MovieDTO> movies, String bio) {
         this.name = name;
         this.age = age;
         this.movies = movies;
-        this.bio = bio;
+        this.biography = bio;
     }
 
     public String getName() {
@@ -42,20 +46,20 @@ public class ActorDTO {
         this.age = age;
     }
 
-    public List<Movie> getMovies() {
+    public List<MovieDTO> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(List<MovieDTO> movies) {
         this.movies = movies;
     }
 
-    public String getBio() {
-        return bio;
+    public String getBiography() {
+        return biography;
     }
 
-    public void setBio(String bio) {
-        this.bio = bio;
+    public void setBiography(String bio) {
+        this.biography = bio;
     }
 
     @Override
@@ -65,18 +69,18 @@ public class ActorDTO {
         ActorDTO actorDTO = (ActorDTO) o;
         return Objects.equals(getName(), actorDTO.getName()) &&
                 Objects.equals(getAge(), actorDTO.getAge()) &&
-                Objects.equals(getBio(), actorDTO.getBio()) &&
+                Objects.equals(getBiography(), actorDTO.getBiography()) &&
                 Objects.equals(getMovies(), actorDTO.getMovies());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age, bio, movies);
+        return Objects.hash(name, age, getBiography(), movies);
     }
 
     @Override
     public String toString() {
-        return "ActorDTO [name=" + getName() + ", age=" + getAge() + ", bio=" + getBio() + ", movies[=" + Arrays.asList(movies)
+        return "ActorDTO [name=" + getName() + ", age=" + getAge() + ", bio=" + getBiography() + ", movies[=" + Arrays.asList(movies)
                 + "]" + "]";
     }
 }

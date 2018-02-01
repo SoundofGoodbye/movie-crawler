@@ -9,16 +9,12 @@ public class SearchEngineQueryBuilder implements TMDBConstants {
         resultBuilder.append(QUERY_PARAM);
         resultBuilder.append(query);
 
-        if (language != null)
-
-        {
+        if (language != null) {
             resultBuilder.append(LANGUAGE);
             resultBuilder.append(language);
         }
 
-        if (page != 0)
-
-        {
+        if (page != 0) {
             resultBuilder.append(PAGE);
             resultBuilder.append(page);
         }

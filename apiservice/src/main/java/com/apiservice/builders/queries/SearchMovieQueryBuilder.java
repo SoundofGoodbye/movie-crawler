@@ -5,8 +5,9 @@ import com.apiservice.constants.TMDBConstants;
 //TODO: Might need to make it a bean if different query types support the same parameters.
 public class SearchMovieQueryBuilder implements TMDBConstants {
 
-    public String buildQuery(boolean includeAdults, String region, int year, int primaryReleaseDate) {
+    public String buildParamsQuery(final String query, boolean includeAdults, final String region, int year, int primaryReleaseDate) {
         StringBuilder resultBuilder = new StringBuilder();
+
 
         resultBuilder.append(INCLUDE_ADULT);
         resultBuilder.append(includeAdults);
