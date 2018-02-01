@@ -11,11 +11,20 @@
     <title>MovieCatalog FrontEnd</title>
 
     <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- load bootstrap -->
     <style>
-        html                    { overflow-y:scroll; }
-        body                    { padding-top:50px; }
-        #movie-list              { margin-bottom:30px; }
+        html {
+            overflow-y: scroll;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        #movie-list {
+            margin-bottom: 30px;
+        }
     </style>
 
     <!-- SPELLS -->
@@ -29,6 +38,7 @@
     <script src="js/components/actorDetailsComponent.js"></script>
     <script src="js/components/movieDetailsComponent.js"></script>
     <script src="js/models/actor_model.js"></script>
+    <script src="js/models/movie_model.js"></script>
 </head>
 <!-- SET THE CONTROLLER AND GET ALL Movies -->
 <body ng-controller="MovieController">
@@ -44,15 +54,15 @@
         <div class="col-sm-4 col-sm-offset-4">
             <!-- LOOP OVER THE movies IN $scope.movies -->
             <!--<div ng-repeat="currentMovie in movies">-->
-                <label>
-                    <label>{{ movie.title }}</label>
-                </label>
+            <label>
+                <label>{{ movie.title }}</label>
+            </label>
             <!--</div>-->
         </div>
     </div>
     <!-- ActorDetailsComponent -->
-   <actor-details></actor-details>
-   <!--<movie-details></movie-details>-->
+    <!--<actor-details></actor-details>-->
+    <movie-details></movie-details>
 </div>
 
 </body>
