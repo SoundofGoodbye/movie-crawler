@@ -7,7 +7,7 @@ public interface TMDBService {
      *
      * @return
      */
-    String search(String searchOption, String query);
+    String search(final String address, final String params);
 
     /**
      * Sometimes it useful to search for movies and TV shows based on filters or definable values like ratings,
@@ -24,4 +24,6 @@ public interface TMDBService {
      * @return
      */
     public String find();
+
+    String get(final String address, final String params);
 }

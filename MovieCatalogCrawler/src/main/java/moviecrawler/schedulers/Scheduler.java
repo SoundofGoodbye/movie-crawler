@@ -17,6 +17,11 @@ import java.util.*;
 @PropertySource("classpath:scheduler.properties")
 public class Scheduler {
 
+    private final static String TITLES_QUEUE = "titlesQueue";
+
+    @Autowired
+    private MessageBrokerService messageBrokerService;
+
     @Autowired
     private MessagingService messagingService;
 
@@ -26,14 +31,14 @@ public class Scheduler {
 
         List<String> crawledMovies = new ArrayList<>();
 
+
         for (URLEnums url : URLEnums.values()) {
             crawledMovies.addAll(crawler.getMovies(url));
         }
 
+
         messagingService.sendMessage(crawledMovies);
 
     }
-
-
 
 }

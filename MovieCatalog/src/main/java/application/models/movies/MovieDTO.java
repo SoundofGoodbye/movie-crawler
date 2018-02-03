@@ -1,12 +1,12 @@
 package application.models.movies;
 
-import application.entities.Genre;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MovieDTO {
 
     public MovieDTO() {
@@ -14,7 +14,6 @@ public class MovieDTO {
 
     public long id;
 
-    
     private int vote_count;
 
     private boolean video;

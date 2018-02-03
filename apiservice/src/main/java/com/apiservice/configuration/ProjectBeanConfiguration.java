@@ -1,6 +1,8 @@
 package com.apiservice.configuration;
 
+import com.apiservice.engine.GetEngine;
 import com.apiservice.engine.SearchEngine;
+import com.apiservice.engine.impl.GetEngineImpl;
 import com.apiservice.engine.impl.SearchEngineImpl;
 import com.apiservice.services.TMDBService;
 import com.apiservice.services.TMDBServiceImpl;
@@ -27,5 +29,12 @@ public class ProjectBeanConfiguration {
         SearchEngine searchEngine = new SearchEngineImpl();
 
         return searchEngine;
+    }
+
+    @Bean(name = "GetEngine")
+    public GetEngine getEngine() {
+        GetEngine getEngine = new GetEngineImpl();
+
+        return getEngine;
     }
 }
