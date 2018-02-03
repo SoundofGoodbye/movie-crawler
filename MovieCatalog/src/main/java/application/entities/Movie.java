@@ -1,9 +1,11 @@
 package application.entities;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@Table(name = "Movies")
 public class Movie {
 
     @Id
@@ -16,7 +18,7 @@ public class Movie {
     @Column(nullable = false)
     private LocalDate releaseDate;
 
-    private int voteCount;
+    private long voteCount;
 
     private boolean video;
 
@@ -39,7 +41,8 @@ public class Movie {
 
     private String overview;
 
-    public Movie() {}
+    public Movie() {
+    }
 
     public long getId() {
         return id;
@@ -65,15 +68,15 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
-    public int getVoteCount() {
+    public long getVoteCount() {
         return voteCount;
     }
 
-    public void setVoteCount(int voteCount) {
+    public void setVoteCount(long voteCount) {
         this.voteCount = voteCount;
     }
 
-    public boolean isVideo() {
+    public boolean getVideo() {
         return video;
     }
 
@@ -166,7 +169,7 @@ public class Movie {
                 ", posterPath='" + posterPath + '\'' +
                 ", originalLanguage='" + originalLanguage + '\'' +
                 ", originalTitle='" + originalTitle + '\'' +
-                ", genreIds=" + genreIds +
+                /*", genreIds=" + genreIds +*/
                 ", backdropPath='" + backdropPath + '\'' +
                 ", adult=" + adult +
                 ", overview='" + overview + '\'' +
