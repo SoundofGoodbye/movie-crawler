@@ -14,15 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping(value = "/movies")
 public class MoviesRestController {
     @Autowired
     private MovieService moviesService;
-
-    @Autowired
-    private MovieDAO movieDAO;
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ResponseEntity<MovieDTO> searchMovie(@RequestParam(value = "q", required = true) final String query, @RequestParam(value = "lang", required = false) final String language,
@@ -46,5 +42,3 @@ public class MoviesRestController {
         return new ResponseEntity<>(converter.convert(movieData), HttpStatus.OK);
     }
 }
-
-
