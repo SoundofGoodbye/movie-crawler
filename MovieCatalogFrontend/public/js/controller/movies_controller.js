@@ -1,25 +1,36 @@
 'use strict';
 
-angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesService', function($scope, MoviesService) {
-    var self = this;
+angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesService', 'Movie', function ($scope, MoviesService, Movie) {
     var POSTER_IMAGE_IMDB_URL = "http://image.tmdb.org/t/p/w780/";
 
-    $scope.movie={title:'',poster_path:'',release_date:'',actors: [],overview:''};
+    $scope.movie = new Movie();
 
-    fetchMovie('Spider-Man');
+    searchMovie('Spider-Man');
+    getMovieDetails('100');
 
-    function fetchMovie(movie){
-        MoviesService.fetchMovie(movie)
+    function searchMovie(query) {
+        MoviesService.searchMovie(query)
             .then(
-                function(d) {
-                    $scope.movie.title = d.title;
-                    $scope.movie.poster_path = POSTER_IMAGE_IMDB_URL + d.poster_path;
-                    $scope.movie.release_date = d.release_date;
-                    $scope.movie.overview = d.overview;
+                function (data) {
+                    $scope.movie = data;
+                    $scope.movie.poster_path = "http://image.tmdb.org/t/p/w780/" + data.poster_path;
                 },
-                function(errResponse){
-                    console.error('Error while fetching Movies');
+                function (errResponse) {
+                    console.error('Error while searching for Movies with:' + query);
                 }
             );
     }
+
+    function getMovieDetails(query) {
+        MoviesService.getMovieDetails(query)
+            .then(
+                function (data) {
+                    $scope.movie = data;
+                },
+                function (errResponse) {
+                    console.error('Error while getting details for: ' + query);
+                }
+            )
+    }
+
 }]);
