@@ -21,9 +21,13 @@ public class MovieDAOImpl implements MovieDAO {
         em.flush();
     }
 
-    //TODO
+    @Transactional
     @Override
     public void saveAllMovies(Collection<Movie> movies) {
-
+        for (Movie movie : movies) {
+            em.persist(movie);
+            em.flush();
+            em.clear();
+        }
     }
 }
