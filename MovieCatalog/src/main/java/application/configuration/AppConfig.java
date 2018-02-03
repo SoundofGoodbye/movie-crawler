@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -48,14 +50,6 @@ public class AppConfig {
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
-    }
-
-    @Bean
-    @Autowired
-    public HibernateTransactionManager transactionManager(final SessionFactory sessionFactory) {
-        final HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory);
-        return transactionManager;
     }*/
 
     final Properties hibernateProperties() {
@@ -69,11 +63,18 @@ public class AppConfig {
     }
 
     @Bean
+    public JpaTransactionManager geJpaTransactionManager() {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        return transactionManager;
+    }
+
+
+    @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan(new String[]{ENTITIES_PACKAGE});
-
         em.setJpaVendorAdapter(jpaVendorAdapter());
         em.setJpaProperties(hibernateProperties());
 

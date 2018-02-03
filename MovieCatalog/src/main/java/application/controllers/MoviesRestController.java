@@ -3,6 +3,7 @@ package application.controllers;
 import application.converters.Converter;
 import application.converters.apiservice.JsonToMovieConverter;
 import application.converters.apiservice.JsonToMovieDetailsConverter;
+import application.daos.MovieDAO;
 import application.models.movies.MovieDTO;
 import application.services.movies.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,4 @@ public class MoviesRestController {
         Converter<String, MovieDTO> converter = new JsonToMovieDetailsConverter();
         return new ResponseEntity<>(converter.convert(movieData), HttpStatus.OK);
     }
-
 }
