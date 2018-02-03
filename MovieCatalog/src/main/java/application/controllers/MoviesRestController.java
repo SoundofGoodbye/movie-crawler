@@ -3,7 +3,6 @@ package application.controllers;
 import application.converters.Converter;
 import application.converters.apiservice.JsonToMovieConverter;
 import application.converters.apiservice.JsonToMovieDetailsConverter;
-import application.converters.custom.MovieToMovieDTOConverter;
 import application.converters.custom.MovieToMovieDTOListConverter;
 import application.entities.Movie;
 import application.models.movies.MovieDTO;

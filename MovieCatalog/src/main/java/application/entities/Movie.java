@@ -22,19 +22,24 @@ public class Movie {
 
     private boolean video;
 
+    @Column(name = "vote_average")
     private double voteAverage;
 
     private double popularity;
 
+    @Column(name = "poster_path")
     private String posterPath;
 
+    @Column(name = "original_language")
     private String originalLanguage;
 
+    @Column(name = "original_titles")
     private String originalTitle;
 
     @OneToMany(mappedBy = "id")
     private List<Genre> genreIds;
 
+    @Column(name = "backdrop_path")
     private String backdropPath;
 
     private boolean adult;
@@ -46,10 +51,6 @@ public class Movie {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getTitle() {
