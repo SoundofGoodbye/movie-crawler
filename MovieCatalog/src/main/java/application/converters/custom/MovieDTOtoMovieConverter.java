@@ -22,10 +22,9 @@ public class MovieDTOtoMovieConverter implements Converter<MovieDTO, Movie> {
         movie.setOriginalLanguage(movieDTO.getOriginal_language());
         movie.setPopularity(movieDTO.getPopularity());
         movie.setPosterPath(movieDTO.getPoster_path());
-        movie.setReleaseDate(movieDTO.getRelease_date());
         movie.setVoteAverage(movieDTO.getVote_average());
+        movie.setReleaseDate(movieDTO.getRelease_date());
         movie.setVoteCount(movieDTO.getVote_count());
-
         return movie;
     }
 }

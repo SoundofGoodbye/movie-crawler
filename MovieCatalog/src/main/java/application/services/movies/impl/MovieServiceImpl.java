@@ -1,5 +1,8 @@
 package application.services.movies.impl;
 
+import application.entities.Movie;
+import application.models.movies.MovieDTO;
+import application.repositories.MovieRepository;
 import application.services.movies.MovieService;
 import com.apiservice.services.movies.TMDBMovieSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +10,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Service("movieService")
 public class MovieServiceImpl implements MovieService {
     @Value("${movie.webcrawler.url}")
     private String webcrawlerUrl;
+
+    @Autowired
+    private MovieRepository movieRepository;
 
     @Autowired
     @Qualifier(value = "TMDBSearchMovieService")
@@ -25,5 +34,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public String getMovie(String movieId, String language, String appendToResponse) {
         return tmdbMovieSearchService.getMovieDetails(movieId, language, appendToResponse);
+    }
+
+    @Override
+    public List<Movie> getNew(LocalDate afterDate) {
+        return movieRepository.findByReleaseDateAfter(afterDate);
     }
 }
