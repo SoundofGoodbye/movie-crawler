@@ -14,7 +14,7 @@ public class MovieDTO {
 
     public long id;
 
-    private int vote_count;
+    private long vote_count;
 
     private boolean video;
 
@@ -48,11 +48,11 @@ public class MovieDTO {
         this.id = id;
     }
 
-    public int getVote_count() {
+    public long getVote_count() {
         return vote_count;
     }
 
-    public void setVote_count(int vote_count) {
+    public void setVote_count(long vote_count) {
         this.vote_count = vote_count;
     }
 

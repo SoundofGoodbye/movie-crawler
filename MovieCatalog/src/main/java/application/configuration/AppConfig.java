@@ -6,10 +6,10 @@ import com.apiservice.BeanConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -23,6 +23,7 @@ import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
 @Configuration
 @PropertySources({@PropertySource("classpath:db.properties")})
 @EnableTransactionManagement
+@EnableJpaRepositories("application.repositories")
 @ComponentScans(value = {@ComponentScan("application")})
 @Import(BeanConfiguration.class)
 public class AppConfig {
@@ -41,6 +42,7 @@ public class AppConfig {
         dataSource.setPassword(env.getProperty("mysql.password"));
         return dataSource;
     }
+
 
    /* @Bean
     public LocalSessionFactoryBean sessionFactory() {
