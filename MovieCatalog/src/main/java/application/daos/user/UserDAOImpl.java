@@ -1,6 +1,7 @@
 package application.daos.user;
 
 import application.entities.User;
+import application.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -17,10 +18,16 @@ public class UserDAOImpl implements UserDAO {
     private EntityManager em;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
     public void saveUser(User user) {
+        if (userRepository.findByUsername(user.getUsername()) != null){
+            throw new EntityExistsException("User with this name already exist");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         em.persist(user);
         em.flush();
@@ -34,5 +41,11 @@ public class UserDAOImpl implements UserDAO {
             em.flush();
             em.clear();
         }
+    }
+
+    @Override
+    public void updateUser(User user) {
+        em.merge(user);
+        em.flush();
     }
 }
