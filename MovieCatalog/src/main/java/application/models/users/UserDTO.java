@@ -27,13 +27,11 @@ public class UserDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
-        return Objects.equals(getUsername(), userDTO.getUsername()) &&
-                Objects.equals(getPassword(), userDTO.getPassword());
+        return Objects.equals(getUsername(), userDTO.getUsername());
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(getUsername(), getPassword());
+        return Objects.hash(getUsername());
     }
 }
