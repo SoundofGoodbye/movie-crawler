@@ -1,0 +1,18 @@
+<div class="col-md-6 col-md-offset-3" ng-controller="MovieController">
+    <div class="carousel slide" id="myCarousel">
+        <div class="carousel-inner">
+            <div class="item" ng-repeat="movie in movies" data-ng-class="{active : $first}">
+                <div class="col-xs-3"><a href="#"><img data-ng-src="{{movies[$index].poster_path}}"
+                                                       alt=" carousel {{$index}}"
+                                                       class="img-responsive"></a></div>
+                <div class="col-xs-3"><a href="#"><img data-ng-src="{{movies[$index +1].poster_path}}"
+                                                       alt=" carousel {{$index}}"
+                                                       class="img-responsive"></a></div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
+                    class="glyphicon glyphicon-chevron-left"></i></a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
+                    class="glyphicon glyphicon-chevron-right"></i></a>
+        </div>
+    </div>
+</div>

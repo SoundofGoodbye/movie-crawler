@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesService', 'Movie', function ($scope, MoviesService, Movie) {
-    var POSTER_IMAGE_IMDB_URL = "http://image.tmdb.org/t/p/w780/";
-
-    $scope.movie = new Movie();
+    $scope.movies = [];
 
     searchMovie('Spider-Man');
     getMovieDetails('100');
@@ -12,8 +10,7 @@ angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesSe
         MoviesService.searchMovie(query)
             .then(
                 function (data) {
-                    $scope.movie = data;
-                    $scope.movie.poster_path = "http://image.tmdb.org/t/p/w780/" + data.poster_path;
+                    $scope.movies.push(Movie.build(data));
                 },
                 function (errResponse) {
                     console.error('Error while searching for Movies with:' + query);
@@ -25,12 +22,11 @@ angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesSe
         MoviesService.getMovieDetails(query)
             .then(
                 function (data) {
-                    $scope.movie = data;
+                    $scope.movies.push(Movie.build(data));
                 },
                 function (errResponse) {
                     console.error('Error while getting details for: ' + query);
                 }
             )
     }
-
 }]);

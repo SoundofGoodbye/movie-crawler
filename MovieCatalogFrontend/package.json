@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/SoundofGoodbye/movie-crawler#readme",
   "dependencies": {
-    "express": "~4.7.2",
-    "morgan": "~1.2.2",
     "body-parser": "~1.5.2",
-    "method-override": "~2.1.2"
+    "express": "~4.7.2",
+    "method-override": "~2.1.2",
+    "morgan": "~1.2.2",
+    "nodemon": "^1.14.12",
+    "save": "^2.3.2"
   }
 }
