@@ -1,4 +1,4 @@
-package application.daos;
+package application.daos.movie;
 
 import application.entities.Movie;
 import org.springframework.stereotype.Repository;
