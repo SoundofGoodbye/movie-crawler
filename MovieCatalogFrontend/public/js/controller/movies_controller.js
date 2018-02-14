@@ -2,6 +2,8 @@
 
 angular.module('MovieWebApp').controller('MovieController', ['$scope', 'MoviesService', 'Movie', function ($scope, MoviesService, Movie) {
     $scope.movies = [];
+    /*$scope.movies.push(Movie.build({title: "Title", poster_path : "pIUvQ9Ed35wlWhY2oU6OmwEsmzG.jpg"}));
+    $scope.movies.push(Movie.build({title: "Title", poster_path : "pIUvQ9Ed35wlWhY2oU6OmwEsmzG.jpg"}));*/
 
     searchMovie('Spider-Man');
     getMovieDetails('100');

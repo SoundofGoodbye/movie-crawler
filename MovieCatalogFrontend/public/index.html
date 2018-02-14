@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-<head>
+<head >
     <!-- META -->
     <meta charset="utf-8">
     <!-- Optimize mobile viewport -->
@@ -8,26 +8,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/carousel.css">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
     <title>MovieCatalog FrontEnd</title>
 </head>
 <body ng-app="MovieWebApp">
 <div class="container">
-    <list-carousel></list-carousel>
+   <!-- <list-carousel></list-carousel>-->
+    <div data-my-directive></div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
 <script src="js/app.js"></script>
 <script src="js/controller/movies_controller.js"></script>
+<script src="js/directives/carousel.js"></script>
 <script src="js/controller/actor_controller.js"></script>
 <script src="js/service/movies_service.js"></script>
 <script src="js/service/actor_service.js"></script>
 <script src="js/components/actorDetailsComponent.js"></script>
 <script src="js/components/movieDetailsComponent.js"></script>
-<script src="js/components/listCarouselComponent.js"></script>
+<!--<script src="js/components/listCarouselComponent.js"></script>-->
 <script src="js/models/actor_model.js"></script>
 <script src="js/models/movie_model.js"></script>
-<script src="js.js"></script>
+
+<!--<script src="js.js"></script>-->
 </body>
 </html>

@@ -1,18 +1,25 @@
-<div class="col-md-6 col-md-offset-3" ng-controller="MovieController">
-    <div class="carousel slide" id="myCarousel">
-        <div class="carousel-inner">
-            <div class="item" ng-repeat="movie in movies" data-ng-class="{active : $first}">
-                <div class="col-xs-3"><a href="#"><img data-ng-src="{{movies[$index].poster_path}}"
-                                                       alt=" carousel {{$index}}"
-                                                       class="img-responsive"></a></div>
-                <div class="col-xs-3"><a href="#"><img data-ng-src="{{movies[$index +1].poster_path}}"
-                                                       alt=" carousel {{$index}}"
-                                                       class="img-responsive"></a></div>
+<div id="carousel-example-multi" data-interval="false" class="carousel carousel-multi slide" ng-controller="MovieController">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item" ng-class="{active:!$index}" ng-repeat="movie in movies" watch-me="movies">
+            <div class="media media-card">
+                <time class="small">10 Aug 2016</time>
+                <div class="media-category">Commodities Quarterly</div>
+                <h4 class="media-heading">
+                    <a href="#">Research article 1</a>
+                </h4>
+                <a class="aside" href="#">Read more</a>
             </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
-                    class="glyphicon glyphicon-chevron-left"></i></a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
-                    class="glyphicon glyphicon-chevron-right"></i></a>
         </div>
     </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-multi" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-multi" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>

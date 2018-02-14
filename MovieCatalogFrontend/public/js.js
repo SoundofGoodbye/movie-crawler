@@ -1,27 +1,17 @@
-// Instantiate the Bootstrap carousel
-
+//Allows bootstrap carousels to display 3 items per page rather than just one
 $(window).load(function () {
-    $('#myCarousel').carousel({
-        interval: 4000
-    })
-
-   /* $('.carousel .item').each(function () {
+    $('.carousel.carousel-multi .item').each(function () {
         var next = $(this).next();
         if (!next.length) {
             next = $(this).siblings(':first');
         }
-        next.children(':first-child').clone().appendTo($(this));
+        next.children(':first-child').clone().attr("aria-hidden", "true").appendTo($(this));
 
-        for (var i = 0; i < 2; i++) {
-            next = next.next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-
-            next.children(':first-child').clone().appendTo($(this));
+        if (next.next().length > 0) {
+            next.next().children(':first-child').clone().attr("aria-hidden", "true").appendTo($(this));
         }
-    });*/
-
-
-
+        else {
+            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+        }
+    });
 });
